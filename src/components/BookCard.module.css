@@ -1,0 +1,46 @@
+.bookCard{
+    background-color: #303030;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+img{
+    width: 60px;
+    margin-right: 30px;
+    border-radius: 5px;
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+}
+.details span{
+    margin-right: 20px;
+    font-size: 0.85rem;
+    color: #959595;
+}
+.bookCard button{
+    cursor: pointer;
+    border: none;
+    background-color: #303030;
+    height: fit-content;
+    margin-left: 180px;
+}
+.bookCard button:hover{
+    transform: scale(1.2);
+}
+
+.like , .dislike {
+    transition: all ease-in-out 0.1s;
+    font-size: 1.8rem;
+}
+
+.like{
+    color: red;
+}
+.dislike{
+    color:#e0e0e0;
+}
