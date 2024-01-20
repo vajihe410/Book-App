@@ -1,25 +1,22 @@
 import React, { useState } from 'react'
 //constants
-import { books } from '../constants/mockData'
+import { books as bookData } from '../constants/mockData'
 //components
 import BookCard from './BookCard'
+import SearchBox from './SearchBox';
 //icons
-import { IoSearchSharp } from "react-icons/io5";
 import Favorite from './Favorite';
 //styles
 import styles from './Books.module.css'
 
+
 function Books() {
   const [favorites, setFavorites] = useState([])
-/*     const [serch,setSearch] = useState("")
+  const [serch, setSearch] = useState([])
+  const [books, setBooks] = useState(bookData)
 
-    const searchHandler = () => {
-      const newTitle = data.title.toUpperCase()
-      books.filter(book => newTitle.includes(serch.toUpperCase()))
-    }
-    const changeHandler = (event) => {
-      setSearch(event.target.value)
-    } */
+
+
     const favoritesHandleList = (book,status) => {
       if(status){
         const newFavoritesList = favorites.filter(item => item.id !== book.id)
@@ -29,13 +26,22 @@ function Books() {
         setFavorites(favorites => [...favorites,book])
       }
     }
+
+    const searchHandler = () => {
+     if(serch){
+      const newBooks = bookData.filter(book => book.title.toLowerCase().includes(serch))
+      setBooks(newBooks)
+     }
+     else{
+      setBooks(bookData)
+     }
+    }
+
   return (
-    <div className={styles.container}>
+    <>
+       <SearchBox serch={serch} setSearch={setSearch} searchHandler={searchHandler}/>
+      <div className={styles.container}>
        <div className={styles.card}>
-     {/*    <div>
-          <input type='text' placeholder='search title' value={serch} onChange={changeHandler}/>
-          <button onClick={searchHandler}><IoSearchSharp /></button>
-        </div> */}
          <div>
             {books.map((book) => (<BookCard key={book.id} data={book} favoritesHandleList={favoritesHandleList}/>))} 
           </div>
@@ -47,6 +53,8 @@ function Books() {
                       </div>}
       </div>
     </div>
+    
+    </>
   )
 }
 
