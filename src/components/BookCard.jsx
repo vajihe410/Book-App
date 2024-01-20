@@ -4,16 +4,18 @@ import { FaHeart } from "react-icons/fa";
 //styles
 import styles from './BookCard.module.css'
 
-function BookCard({data}) {
+function BookCard({data , favoritesHandleList}) {
+
   const [like , setLike] = useState(false)
 
   const likeHandler = () => {
+    favoritesHandleList(data,like)
     setLike(like => !like)
   }
 
   return (
     <div className={styles.bookCard}>
-        <img src={`../assets/${data.image}`} alt={data.title}/>
+        <img src={data.image} alt={data.title}/>
         <div className={styles.info}>
             <h3>{data.title}</h3>
             <h4>{data.author}</h4>

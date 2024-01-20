@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: row;
+}
+.card{
+    min-height: 100vh;
+    flex: 2.6 1 0;
+}
+.favorites{
+    flex: 1 1 0;
+    height: fit-content;
+    padding: 15px;
+    background-color:#6552f4;
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 270px;
+}
+.favorites h4{
+    font-size: 1.2rem;
+}
